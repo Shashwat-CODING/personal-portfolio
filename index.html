@@ -1,268 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <title>Penny Lioliou | Software Engineer</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <!-- Section 1 -->
-      <section class="section-1 center" id="section-1">
-        <h1 class="section-1-heading">
-          Software Engineer
-        </h1>
-        <img src="images/photo.me.jpg" alt="Penny Lioliou" class="person-img" />
-        <div class="name-container">
-          <h3 class="person-name">Penny Lioliou </h3>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shashwat | Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary: #f0c674;
+            --background: #1a1b1e;
+            --surface: #2a2b2e;
+            --text: #e4e4e4;
+            --text-secondary: #a0a0a0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(26, 27, 30, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .nav-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(to bottom, rgba(26,27,30,0.8), var(--background)),
+                        url('/api/placeholder/1920/1080') center/cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 2rem;
+            border: 3px solid var(--primary);
+            padding: 5px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        /* About Section */
+        .section {
+            padding: 8rem 2rem;
+        }
+
+        .section-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: var(--primary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .skill-bar {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-bar:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(240, 198, 116, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            transition: width 1s ease;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .project-tech {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            background: var(--surface);
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--background);
+            color: var(--text-secondary);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-content {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
         </div>
-        <div id="title-container">
-          <div id="text-name"></div><div id="cursor"></div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="/api/placeholder/150/150" alt="Shashwat">
+            <h1>Shashwat</h1>
+            <p>Software Engineer & Front-end Developer</p>
         </div>
-        <a href="#section-3" class="section-1-btn">Projects</a>
-      </section>
-      <!-- End of Section 1 -->
+    </section>
 
-      <!-- Navbar -->
-      <nav class="navbar center">
-        <a href="#section-1" class="navbar-link">Home</a>
-        <a href="#section-2" class="navbar-link">About</a>
-        <a href="#section-3" class="navbar-link">Portfolio</a>
-        <a href="#section-4" class="navbar-link">Contact</a>
-      </nav>
-
-      <!-- End of Navbar -->
-
-      <!-- Section 2 -->
-      <section class="section-2" id="section-2">
-        <h1 class="section-heading section-2-heading">About</h1>
-        <div class="progress-bars-wrapper">
-          <div class="progress-bar">
-            <p class="progress-text">
-              HTML
-              <span></span>%
-            </p>
-            <div class="progress-percent"></div>
-          </div>
-          <div class="progress-bar">
-            <p class="progress-text">
-              CSS
-              <span></span>%
-            </p>
-            <div class="progress-percent"></div>
-          </div>
-          <div class="progress-bar">
-            <p class="progress-text">
-              JavaScript
-              <span></span>%
-            </p>
-            <div class="progress-percent"></div>
-          </div>
-          <div class="progress-bar">
-            <p class="progress-text">
-              C/C++
-              <span></span>%
-            </p>
-            <div class="progress-percent"></div>
-          </div>
-          <div class="progress-bar">
-            <p class="progress-text">
-              NodeJS
-              <span></span>%
-            </p>
-            <div class="progress-percent"></div>
-          </div>
-        </div>
-
-        <div class="card-about"> 
-          <div class="person-info">
-            <div class="card-header">
-              <div class="dot  red  dot--full"></div>
-              <div class="dot  yellow  dot--full"></div>
-              <div class="dot  green  dot--full"></div>
-            </div>
-            <h3>Hi! </br></br> I'm a Software Engineer who loves to transform ideas into reality using code. 
-            I'm currently designing, building and configuring applications to meet business processes.
-            This is a portfolio website to place some of my mini-projects and share my work. </h3>
-            </div>
-        </div>
-
-        <div class="services">
-          <div class="service">
-            <i class="far fa-lightbulb"></i>
-            <h2 class="service-heading">Creative</h2>
-          </div>
-          <div class="service">
-            <i class="fas fa-cut"></i>
-            <h2 class="service-heading">Problem Solving</h2>
-          </div>
-          <div class="service">
-            <i class="fas fa-tachometer-alt"></i>
-            <h2 class="service-heading">Fast</h2>
-          </div>
-          <div class="service">
-            <i class="fas fa-rocket"></i>
-            <h2 class="service-heading">Dynamic</h2>
-          </div>
-        </div>
-      </section>
-      <!-- End of Section 2 -->
-
-      <!-- Section 3 -->
-      <section class="section-3" id="section-3">
-        <h1 class="section-heading section-3-heading">Projects</h1>
-        <div class="projects-wrapper center">  
-          <div class="project">
-            <div class="project-text">
-              <h2 class="project-name">Orders Reference App</h2>
-              <h4 class="project-technologies">HTML / JS / SAPUI5</h4>
-            </div>
-            <img src="images/project-2.jpg" class="project-img" />
-            <a
-              href="https://github.com/dev-penny/Demo-Fiori-App"
-              class="project-link"
-              target="_blank"
-              >Go to github</a
-            >
-          </div>
-          <div class="project">
-            <div class="project-text">
-              <h2 class="project-name">Compiler Design</h2>
-              <h4 class="project-technologies">C / C++ </h4>
-            </div>
-            <img src="images/project-5.jpg" class="project-img" />
-            <a
-              href="https://github.com/dev-penny/Compiler-design"
-              class="project-link"
-              target="_blank"
-              >Go to github</a
-            >
-          </div>
-          <div class="project">
-            <div class="project-text">
-              <h2 class="project-name">Panarcadians Homepage</h2>
-              <h4 class="project-technologies">HTML / CSS / JS</h4>
-            </div>
-            <img src="images/project-1.jpg" class="project-img" />
-            <a
-              href="https://github.com/dev-penny/project-website"
-              class="project-link"
-              target="_blank"
-              >Go to github</a
-            >
-          </div>
-          <div class="project">
-            <div class="project-text">
-              <h2 class="project-name">Paypal Clone</h2>
-              <h4 class="project-technologies">HTML / CSS / JS</h4>
-            </div>
-            <img src="images/project-6.jpg" class="project-img" />
-            <a
-              href="https://github.com/dev-penny/Paypal-clone"
-              class="project-link"
-              target="_blank"
-              >Go to github</a
-            >
-          </div>
-          <div class="project">
-            <div class="project-text">
-              <h2 class="project-name">Server Applications</h2>
-              <h4 class="project-technologies">C / C++</h4>
-            </div>
-            <img src="images/project-3.jpg" class="project-img" />
-            <a
-              href="https://github.com/dev-penny/Server-applications"
-              class="project-link"
-              target="_blank"
-              >Go to github</a
-            >
-          </div>
-          <div class="project">
-            <div class="project-text">
-              <h2 class="project-name">Router Operation</h2>
-              <h4 class="project-technologies">C / C++</h4>
-            </div>
-            <img src="images/project-4.jpg" class="project-img" />
-            <a
-              href="https://github.com/dev-penny/Router-operation"
-              class="project-link"
-              target="_blank"
-              >Go to github</a
-            >
-          </div>
-
-        </div>
-      </section>
-      <!-- End of Section 3 -->
-
-      <!-- Section 4 -->
-      <section class="section-4" id="section-4">
-        <h1 class="section-heading section-4-heading">Get in Touch</h1>
-					<!-- <ul class="list-unstyled">
-						<li><i class="fas fa-phone-alt"  color="black"></i> +30 69XXXXXXXX</li>
-            <li><i class="fas fa-building" color="black"></i> Thessaloniki, Greece</li>
-						<li><i class="fas fa-map-marker" color="black"></i> Evia, Greece</li>
-						<li><i class="fa fa-envelope"  color="black"></i> 
-              <a class="section-detail-email" href="mailto:liolioupenny@gmail.com">Send an email</a></li>
-					<ul> -->
-            <div class="card-about card-contact-info"> 
-              <div class="person-info card-contact-info">
-                <div class="card-header card-header-contact-info">
-                  <div class="dot  red     dot--full dot-contact-info"></div>
-                  <div class="dot  yellow  dot--full dot-contact-info"></div>
-                  <div class="dot  green   dot--full dot-contact-info"></div>
+    <section id="about" class="section">
+        <div class="section-content">
+            <h2 class="section-title">About Me</h2>
+            <div class="skills-grid">
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>HTML</span>
+                        <span>97%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 97%"></div>
+                    </div>
                 </div>
-                <h3>Whether you want to get in touch, talk about a project collaboration, or just say hi, I'd love to hear from you.
-                  Simply send me an <a class="section-detail-email" href="mailto:liolioupenny@gmail.com">email</a>.
-                  </br></br>
-                  Liked some of my work?
-                  </br>
-                  Buy me a 
-                  <a class="coffee-link" href="https://www.buymeacoffee.com/penny.dev" target="blank">coffee ☕</a>
-                  and leave a comment as it motivates me to build new things!
-                  <!-- <button class="coffee-img">
-                    <img src = "images/bmc-logo.svg" alt="coffee-img"/>
-                  </button> -->
-                  </a>
-                </h3>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>CSS</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>JavaScript</span>
+                        <span>72%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 72%"></div>
+                    </div>
+                </div>
+                <div class="skill-bar">
+                    <div class="skill-info">
+                        <span>C/C++</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%"></div>
+                    </div>
                 </div>
             </div>
-      </section>
-      <!-- End of Section 4 -->
-
-      <!-- Section 5 -->
-      <footer class="section-5 center">
-        <div class="social-media">
-          <a href="https://github.com/dev-penny" class="social-media-link">
-            <i class="fab fa-github-square"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/penny-lioliou-9755121b3/" class="social-media-link">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="https://www.facebook.com" class="social-media-link">
-            <i class="fab fa-facebook-square"></i>
-          </a>
-          <a href="https://www.instagram.com" class="social-media-link">
-            <i class="fab fa-instagram-square"></i>
-          </a>
         </div>
-        <p class="copyright">
-          Copyright &copy; 2021 Penny Lioliou. All Rights Reserved.
-        </p>
-      </footer>
-      <!-- End of Section 5 -->
-    </div>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <section id="projects" class="section">
+        <div class="section-content">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="/api/placeholder/400/300" alt="Project 1" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Orders Reference App</h3>
+                        <p class="project-tech">HTML / JS / SAPUI5</p>
+                        <a href="#" class="project-link">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="/api/placeholder/400/300" alt="Project 2" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Compiler Design</h3>
+                        <p class="project-tech">C / C++</p>
+                        <a href="#" class="project-link">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="/api/placeholder/400/300" alt="Project 3" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">Homepage</h3>
+                        <p class="project-tech">HTML / CSS / JS</p>
+                        <a href="#" class="project-link">
+                            View Project <i class="fas fa-external-link-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="contact-content">
+            <h2 class="section-title">Get in Touch</h2>
+            <p>Whether you want to get in touch, talk about a project collaboration, or just say hi, I'd love to hear from you.</p>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="mailto:contact@shashwat.dev" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 Shashwat. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animate skill bars on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.getAttribute('data-width');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.progress').forEach(bar => {
+            bar.style.width = '0';
+            bar.setAttribute('data-width', bar.style.width);
+            observer.observe(bar);
+        });
+    </script>
+</body>
 </html>
